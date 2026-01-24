@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Product Demo</title>
+</head>
+<body>
+    <h2>Mở Console để xem kết quả (F12)</h2>
+    <script>
+    function Product(id, name, price, quantity, category, isAvailable) {
+      this.id = id;
+      this.name = name;
+      this.price = price;
+      this.quantity = quantity;
+      this.category = category;
+      this.isAvailable = isAvailable;
+    }
+    const products = [
+      new Product(1, "iPhone 15", 25000000, 10, "Phone", true),
+      new Product(2, "Samsung Galaxy S23", 22000000, 0, "Phone", true),
+      new Product(3, "MacBook Air M2", 32000000, 5, "Laptop", true),
+      new Product(4, "Dell XPS 13", 28000000, 3, "Laptop", false),
+      new Product(5, "AirPods Pro", 6000000, 20, "Accessories", true),
+      new Product(6, "Logitech Mouse", 800000, 15, "Accessories", true)
+    ];
+    console.log("Câu 3:", products.map(p => ({ name: p.name, price: p.price })));
+    console.log("Câu 4:", products.filter(p => p.quantity > 0));
+    console.log("Câu 5:", products.some(p => p.price > 30000000));
+    console.log(
+      "Câu 6:",
+      products.filter(p => p.category === "Accessories")
+              .every(p => p.isAvailable)
+    );
+    console.log(
+      "Câu 7:",
+      products.reduce((sum, p) => sum + p.price * p.quantity, 0)
+    );
+    console.log("Câu 8:");
+    for (const p of products) {
+      console.log(`${p.name} - ${p.category} - ${p.isAvailable ? "Đang bán" : "Ngừng bán"}`);
+    }
+    console.log("Câu 9:");
+    for (const key in products[0]) {
+      console.log(key, ":", products[0][key]);
+    }
+    console.log(
+      "Câu 10:",
+      products.filter(p => p.isAvailable && p.quantity > 0)
+              .map(p => p.name)
+    );
+    </script>
+</body>
+</html>
